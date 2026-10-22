@@ -194,5 +194,12 @@
         <a href="https://wa.me/628123456789" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
     </div>
 </footer>
+<script>
+    const slides = document.querySelector('.slides');
+    document.querySelector('.slide-btn.next').onclick = () =>
+        slides.scrollBy({ left: slides.clientWidth });
+    document.querySelector('.slide-btn.prev').onclick = () =>
+        slides.scrollBy({ left: -slides.clientWidth });
+</script>
 </body>
 </html>
