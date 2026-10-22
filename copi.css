@@ -700,3 +700,42 @@ h1 {
     .cerita-lead { font-size: 15px; }
     .cerita-grid { grid-template-columns: 1fr; }
 }
+/* ===== SLIDER HERO ===== */
+.slider { position: relative; overflow: hidden; }
+
+.slides {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+}
+
+.slides::-webkit-scrollbar { display: none; }
+
+.slides img {
+    flex: 0 0 100%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    scroll-snap-align: start;
+}
+
+.slide-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.8);
+    color: #5a3a2a;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.slide-btn.prev { left: 10px; }
+.slide-btn.next { right: 10px; }
