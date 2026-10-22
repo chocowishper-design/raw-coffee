@@ -10,6 +10,11 @@ body {
     background: #f5e6c8; /* warna cream */
 }
 
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 110px;
+}
+
 .navbar {
     display: flex;
     justify-content: space-around;
@@ -17,6 +22,9 @@ body {
     padding: 6px 24px;
     background: #fff;
     border-bottom: 1px solid #fff;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 .navbar a:not(.logo) {
@@ -38,7 +46,12 @@ body {
     transform: translateY(0) scale(0.95);
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
 }
-.logo img { height: 98px; width: auto; }
+.logo img {
+    height: 98px;
+    width: auto;
+    position: relative;
+    top: 8px;
+}
 
 .navbar a { color: #000; text-decoration: none; font-size: 40px; }
 .logo { display: block; }
