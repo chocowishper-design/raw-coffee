@@ -78,7 +78,7 @@ h1 {
 
 .hero-text p {
     margin: 16px 0 28px;
-    font-family: "Times New Roman", serif;
+    font-family: "Montserrat", serif;
     font-size: 20px;
     line-height: 1.5;
     color: #2b1d14;
@@ -171,7 +171,7 @@ h1 {
     line-height: 1.4;
     letter-spacing: 3px;
     text-transform: uppercase;
-    text-align: center;
+    text-align: right;
     color: #5a3a2a;
 }
 
@@ -182,7 +182,7 @@ h1 {
     line-height: 2.1;
     letter-spacing: 4px;
     text-transform: uppercase;
-    text-align: left;
+    text-align: right;
     color: #5a3a2a;
 }
 
