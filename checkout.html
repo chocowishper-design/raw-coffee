@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout | Raw Coffee</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="copi.css">
+    <link rel="stylesheet" href="checkout.css">
+    <script src="cart.js" defer></script>
+    <script src="checkout.js" defer></script>
+</head>
+<body>
+    <header class="navbar">
+        <a href="index.html#beranda" class="logo"><img src="COFFEE (43).png" alt="Logo RAW Coffee"></a>
+        <a href="index.html#beranda" aria-label="Beranda"><i class="fa-solid fa-house"></i></a>
+        <a href="index.html#tentang" aria-label="Tentang"><i class="fa-regular fa-circle-question"></i></a>
+        <a href="index.html#menu" aria-label="Menu"><i class="fa-solid fa-mug-saucer"></i></a>
+        <a href="index.html#cabang" aria-label="Cabang"><i class="fa-solid fa-location-dot"></i></a>
+        <a href="index.html#kontak" aria-label="Kontak"><i class="fa-solid fa-address-book"></i></a>
+        <a href="checkout.html" class="cart-link" aria-label="Keranjang">
+            <i class="fa-solid fa-cart-shopping"></i><span class="cart-count">0</span>
+        </a>
+    </header>
+
+    <main class="checkout">
+        <h1 class="checkout-title">Checkout</h1>
+        <p class="checkout-sub">Cek pesananmu, isi data, lalu pesan sekarang</p>
+
+        <!-- keranjang kosong -->
+        <div class="checkout-empty" id="checkout-empty" hidden>
+            <i class="fa-solid fa-mug-hot"></i>
+            <h2>Keranjang masih kosong</h2>
+            <p>Pilih kopi favoritmu dulu ya.</p>
+            <a href="index.html#menu" class="menu-btn">Lihat Menu <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+
+        <!-- status pesanan (setelah checkout) -->
+        <div class="co-status" id="checkout-success" hidden>
+            <div class="co-status-top">
+                <h2 id="st-title">Pickup</h2>
+                <div class="co-steps" id="co-steps">
+                    <div class="co-step">
+                        <span class="co-step-ic"><i class="fa-solid fa-rotate"></i></span>
+                        <small>Sedang Diproses</small>
+                    </div>
+                    <div class="co-step">
+                        <span class="co-step-ic"><i class="fa-solid fa-store"></i></span>
+                        <small>Siap Di-Pickup</small>
+                    </div>
+                    <div class="co-step">
+                        <span class="co-step-ic"><i class="fa-solid fa-check"></i></span>
+                        <small>Pesanan Selesai</small>
+                    </div>
+                </div>
+                <img class="co-status-img" src="pegangkopi.jpeg" alt="Pesananmu">
+            </div>
+
+            <div class="co-status-card">
+                <h3 id="st-no"></h3>
+                <div id="st-items"></div>
+                <div class="co-status-total"><span>Total</span><span id="st-total"></span></div>
+                <p id="st-info"></p>
+            </div>
+
+            <div class="co-status-actions">
+                <button type="button" class="co-btn-outline" id="btn-struk">Download Struk</button>
+                <a href="index.html" class="co-btn-solid">Kembali Ke Beranda</a>
+            </div>
+        </div>
+
+        <!-- isi checkout: pesanan di kiri, form di kanan -->
+        <div class="checkout-grid" id="checkout-content">
+            <section class="co-panel">
+                <h2>Pesananmu</h2>
+                <div id="checkout-items"></div>
+            </section>
+
+            <form class="co-panel" id="checkout-form" novalidate>
+                <h2>Data Pemesan</h2>
+
+                <label for="nama">Nama</label>
+                <input type="text" id="nama" name="nama" placeholder="Nama kamu" required>
+
+                <label for="wa">No. WhatsApp</label>
+                <input type="tel" id="wa" name="wa" placeholder="08xxxxxxxxxx" required>
+
+                <label>Tipe Pesanan</label>
+                <div class="co-options">
+                    <label class="co-opt"><input type="radio" name="tipe" value="Dine In" checked> Dine In</label>
+                    <label class="co-opt"><input type="radio" name="tipe" value="Take Away"> Take Away</label>
+                </div>
+
+                <label for="cabang">Cabang</label>
+                <select id="cabang" name="cabang">
+                    <option>RAW Jakarta</option>
+                    <option>RAW Cabang 2</option>
+                    <option>RAW Cabang 3</option>
+                </select>
+
+                <div id="meja-wrap">
+                    <label for="meja">Nomor Meja</label>
+                    <input type="text" id="meja" name="meja" placeholder="Contoh: 12">
+                </div>
+
+                <label>Pembayaran</label>
+                <div class="co-options">
+                    <label class="co-opt"><input type="radio" name="bayar" value="Bayar di kasir" checked> Kasir</label>
+                    <label class="co-opt"><input type="radio" name="bayar" value="QRIS"> QRIS</label>
+                    <label class="co-opt"><input type="radio" name="bayar" value="Transfer"> Transfer</label>
+                </div>
+
+                <label for="catatan">Catatan (opsional)</label>
+                <textarea id="catatan" name="catatan" rows="3" placeholder="Less sugar, extra shot, dll."></textarea>
+
+                <div class="co-summary">
+                    <div><span>Subtotal</span><span id="sum-sub">Rp 0</span></div>
+                    <div><span>Pajak (10%)</span><span id="sum-tax">Rp 0</span></div>
+                    <div class="co-total"><span>Total</span><span id="sum-total">Rp 0</span></div>
+                </div>
+
+                <p class="co-error" id="co-error" role="alert"></p>
+
+                <button type="submit" class="menu-btn co-submit">
+                    <i class="fa-solid fa-bag-shopping"></i> Pesan Sekarang
+                </button>
+            </form>
+        </div>
+    </main>
+
+    <footer class="kontak" id="kontak">
+        <h3>RAW COFFEE</h3>
+        <p>© 2026 RAW COFFEE. All rights reserved.</p>
+    </footer>
+</body>
+</html>
